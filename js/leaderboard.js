@@ -115,7 +115,7 @@ class Leaderboard {
     shareScore(gameType, score) {
         if (window.Telegram && window.Telegram.WebApp) {
             const tg = window.Telegram.WebApp;
-            const message = `🎮 I just scored ${score} in ${gameType} on MicroArcade! Can you beat me?`;
+            const message = `🎮 I just scored ${score} in ${gameType} on MiniArcades! Can you beat me?`;
             
             // Try to share via Telegram
             if (tg.shareToStory) {
@@ -182,8 +182,8 @@ class Leaderboard {
             const tg = window.Telegram.WebApp;
             const rank = this.getUserRank();
             const message = rank 
-                ? `🎮 I'm ranked #${rank} on MicroArcade! Join me and let's compete! 🏆`
-                : `🎮 Join me on MicroArcade - quick games for instant fun! 🏆`;
+                ? `🎮 I'm ranked #${rank} on MiniArcades! Join me and let's compete! 🏆`
+                : `🎮 Join me on MiniArcades - quick games for instant fun! 🏆`;
             
             tg.openTelegramLink(`https://t.me/share/url?url=${encodeURIComponent('https://t.me/miniarcades_bot')}&text=${encodeURIComponent(message)}`);
         }

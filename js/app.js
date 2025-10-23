@@ -65,10 +65,10 @@ class App {
     inviteFriends() {
         if (window.Telegram && window.Telegram.WebApp) {
             const tg = window.Telegram.WebApp;
-            const message = '🎮 Join me on MicroArcade - quick games for instant fun! 🏆';
-            tg.openTelegramLink(`https://t.me/share/url?url=${encodeURIComponent('https://t.me/your_bot')}&text=${encodeURIComponent(message)}`);
+            const message = '🎮 Join me on MiniArcades - quick games for instant fun! 🏆';
+            tg.openTelegramLink(`https://t.me/share/url?url=${encodeURIComponent('https://t.me/miniarcades_bot')}&text=${encodeURIComponent(message)}`);
         } else {
-            alert('Share: Join me on MicroArcade! 🎮');
+            alert('Share: Join me on MiniArcades! 🎮');
         }
     }
 

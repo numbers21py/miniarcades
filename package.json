@@ -1,7 +1,7 @@
 {
-  "name": "microarcade-tma",
+  "name": "miniarcades-tma",
   "version": "1.0.0",
-  "description": "Telegram Mini App with quick casual games",
+  "description": "MiniArcades - 8 casual games for Telegram Mini Apps",
   "main": "index.html",
   "scripts": {
     "start": "npx serve .",
@@ -17,7 +17,7 @@
     "casual",
     "mobile"
   ],
-  "author": "MicroArcade Team",
+  "author": "MiniArcades Team",
   "license": "MIT",
   "devDependencies": {
     "html-minifier-terser": "^7.2.0",
@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/microarcade-tma.git"
+    "url": "https://github.com/numbers21py/miniarcades.git"
   },
-  "homepage": "https://yourusername.github.io/microarcade-tma"
+  "homepage": "https://numbers21py.github.io/miniarcades"
 }

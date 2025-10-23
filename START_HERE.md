@@ -1,4 +1,4 @@
-# 🎮 Инструкция по запуску MicroArcade
+# 🎮 Инструкция по запуску MiniArcades
 
 ## 👋 Привет!
 
@@ -10,7 +10,7 @@
 ## 📍 ШАГ 1: Создай репозиторий на GitHub
 
 1. Открой: **[github.com/new](https://github.com/new)**
-2. **Repository name:** `microarcade`
+2. **Repository name:** `miniarcades`
 3. **Description:** `🎮 8 casual games for Telegram Mini Apps`
 4. Выбери: **Public**
 5. **НЕ ставь галочки** на "Add a README file"
@@ -26,7 +26,7 @@
 2. Открой папку `/Users/gpt0/Desktop/game` в Finder
 3. Выдели **ВСЕ файлы и папки** (нажми `Cmd+A`)
 4. **Перетащи** их на страницу GitHub
-5. Внизу напиши коммит: `🎮 MicroArcade v1.0`
+5. Внизу напиши коммит: `🎮 MiniArcades v1.0`
 6. Нажми **"Commit changes"**
 
 **✅ Готово!** Код загружен!
@@ -58,7 +58,7 @@ git push -u origin main
 
 **Твой URL будет:**
 ```
-https://numbers21py.github.io/microarcade/
+https://numbers21py.github.io/miniarcades/
 ```
 
 Скопируй его! Понадобится в следующем шаге!
@@ -74,10 +74,10 @@ https://numbers21py.github.io/microarcade/
 ```
 
 1. Выбери своего бота: **@miniarcades_bot**
-2. **Title:** `MicroArcade`
+2. **Title:** `MiniArcades`
 3. **Description:** `🎮 8 быстрых игр! Играй соло или с друзьями!`
 4. **Photo:** (можешь пропустить или загрузить картинку 640x360)
-5. **Web App URL:** `https://numbers21py.github.io/microarcade/`
+5. **Web App URL:** `https://numbers21py.github.io/miniarcades/`
    ☝️ **ВАЖНО!** Вставь свой URL из Шага 3!
 6. **Short name:** `game`
 

@@ -1,4 +1,4 @@
-# 🎮 MicroArcade
+# 🎮 MiniArcades
 
 **Твой мини-аркадный зал прямо в Telegram!**
 
@@ -67,7 +67,7 @@
 
 ---
 
-## 🌟 Почему MicroArcade?
+## 🌟 Почему MiniArcades?
 
 - **Мгновенный доступ** - никаких установок и скачиваний
 - **Играй везде** - работает на всех устройствах
@@ -97,6 +97,6 @@ https://t.me/miniarcades_bot/game
 
 ---
 
-**🎮 MicroArcade** - Играй прямо сейчас!
+**🎮 MiniArcades** - Играй прямо сейчас!
 
 *Создано с ❤️ для Telegram Community*
