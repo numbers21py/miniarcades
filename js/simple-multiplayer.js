@@ -56,9 +56,12 @@ class SimpleMultiplayer {
     }
 
     // Join room (simulated)
-    joinRoom(roomId) {
+    joinRoom(roomId, gameType = null) {
         this.roomId = roomId;
         this.isHost = false;
+        if (gameType) {
+            this.gameType = gameType;
+        }
         
         // Simulate joining
         const roomData = {

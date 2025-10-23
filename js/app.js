@@ -133,9 +133,12 @@ class App {
         if (!roomId) return;
 
         try {
-            multiplayer.joinRoom(roomId);
+            console.log('Joining room via prompt:', roomId, 'for game:', gameType);
+            multiplayer.joinRoom(roomId, gameType);
+            console.log('Room joined via prompt, starting game...');
             this.startMultiplayerGame(gameType);
         } catch (error) {
+            console.error('Join room via prompt error:', error);
             alert('Error: ' + error.message);
         }
     }
@@ -252,9 +255,12 @@ class App {
 
     joinRoomById(roomId, gameType) {
         try {
-            multiplayer.joinRoom(roomId);
+            console.log('Joining room:', roomId, 'for game:', gameType);
+            multiplayer.joinRoom(roomId, gameType);
+            console.log('Room joined, starting game...');
             this.startMultiplayerGame(gameType);
         } catch (error) {
+            console.error('Join room error:', error);
             alert('Error: ' + error.message);
             this.updateRoomsList(gameType);
         }
