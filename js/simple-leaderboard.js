@@ -100,6 +100,30 @@ class SimpleLeaderboard {
                                 onclick="leaderboard.displayLeaderboard('dice')">
                             Dice
                         </button>
+                        <button class="mode-btn ${gameType === 'rps' ? 'active' : ''}" 
+                                onclick="leaderboard.displayLeaderboard('rps')">
+                            RPS
+                        </button>
+                        <button class="mode-btn ${gameType === 'reaction' ? 'active' : ''}" 
+                                onclick="leaderboard.displayLeaderboard('reaction')">
+                            Reaction
+                        </button>
+                        <button class="mode-btn ${gameType === 'memory' ? 'active' : ''}" 
+                                onclick="leaderboard.displayLeaderboard('memory')">
+                            Memory
+                        </button>
+                        <button class="mode-btn ${gameType === 'snake' ? 'active' : ''}" 
+                                onclick="leaderboard.displayLeaderboard('snake')">
+                            Snake
+                        </button>
+                        <button class="mode-btn ${gameType === 'ticTacToe' ? 'active' : ''}" 
+                                onclick="leaderboard.displayLeaderboard('ticTacToe')">
+                            Tic-Tac-Toe
+                        </button>
+                        <button class="mode-btn ${gameType === 'slots' ? 'active' : ''}" 
+                                onclick="leaderboard.displayLeaderboard('slots')">
+                            Slots
+                        </button>
                         <button class="mode-btn ${gameType === 'colorMatch' ? 'active' : ''}" 
                                 onclick="leaderboard.displayLeaderboard('colorMatch')">
                             Color Match
