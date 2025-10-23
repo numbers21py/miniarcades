@@ -167,7 +167,13 @@ class Multiplayer {
 
     // Generate room ID
     generateRoomId() {
-        return 'room_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        // Generate short 5-character code like Steam Guard
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // Removed confusing chars (0,O,1,I)
+        let code = '';
+        for (let i = 0; i < 5; i++) {
+            code += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return code;
     }
 
     // Save room to storage

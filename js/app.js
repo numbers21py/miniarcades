@@ -22,8 +22,6 @@ class App {
             window.Telegram.WebApp.expand();
         }
 
-        // Create particles
-        Utils.createParticles();
 
         // Show main menu
         this.showMainMenu();
