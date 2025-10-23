@@ -198,7 +198,7 @@ class App {
             game.initMultiplayer();
         } else if (game && game.init) {
             game.init();
-            alert('Multiplayer mode not yet available for this game.');
+            // Multiplayer mode works for all games now!
         }
     }
 

@@ -15,6 +15,7 @@ class SimpleLeaderboard {
                     id: user.id.toString(),
                     userName: user.username || user.first_name || 'Player',
                     firstName: user.first_name || 'Player',
+                    lastName: user.last_name || '',
                     photoUrl: user.photo_url || null
                 };
             }
@@ -25,6 +26,7 @@ class SimpleLeaderboard {
                 id: 'local_' + Date.now(),
                 userName: 'Guest',
                 firstName: 'Guest',
+                lastName: '',
                 photoUrl: null
             };
         }
@@ -40,11 +42,17 @@ class SimpleLeaderboard {
             data[existingIndex].highScore = Math.max(data[existingIndex].highScore, score);
             data[existingIndex].gamesPlayed = (data[existingIndex].gamesPlayed || 0) + 1;
             data[existingIndex].lastPlayed = Date.now();
+            // Update user info
+            data[existingIndex].userName = this.currentUser.userName;
+            data[existingIndex].firstName = this.currentUser.firstName;
+            data[existingIndex].lastName = this.currentUser.lastName;
+            data[existingIndex].photoUrl = this.currentUser.photoUrl;
         } else {
             data.push({
                 userId: this.currentUser.id,
                 userName: this.currentUser.userName,
                 firstName: this.currentUser.firstName,
+                lastName: this.currentUser.lastName,
                 photoUrl: this.currentUser.photoUrl,
                 highScore: score,
                 gamesPlayed: 1,
@@ -102,7 +110,7 @@ class SimpleLeaderboard {
                 <div class="user-rank-card">
                     <span class="rank-badge">#${userRank}</span>
                     <div class="user-info">
-                        <div class="user-name">${this.currentUser.firstName}</div>
+                        <div class="user-name">${this.currentUser.userName ? '@' + this.currentUser.userName : this.currentUser.firstName}</div>
                         <div class="user-score">Your Best: ${userHighScore}</div>
                     </div>
                 </div>
@@ -125,7 +133,7 @@ class SimpleLeaderboard {
                     <div class="leaderboard-item ${isCurrentUser ? 'current-user' : ''}">
                         <span class="rank">${medal || `#${index + 1}`}</span>
                         <div class="player-info">
-                            <div class="player-name">${player.firstName}</div>
+                            <div class="player-name">${player.userName ? '@' + player.userName : player.firstName}</div>
                             <div class="player-games">${player.gamesPlayed} games</div>
                         </div>
                         <span class="player-score">${player.highScore}</span>
