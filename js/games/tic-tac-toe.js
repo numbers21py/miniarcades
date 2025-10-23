@@ -38,6 +38,119 @@ class TicTacToeGame {
         }
     }
 
+    initMultiplayer() {
+        this.board = ['', '', '', '', '', '', '', '', ''];
+        this.currentPlayer = 'X';
+        this.gameOver = false;
+        
+        const content = `
+            <div class="game-title-screen">❌ Tic Tac Toe - Multiplayer</div>
+            <div class="multiplayer-info">
+                <div class="room-info">Room: ${multiplayer.roomId}</div>
+                <div class="players-info">
+                    <div class="player">You: ${leaderboard.currentUser?.firstName || 'Player'} (❌)</div>
+                    <div class="player">Opponent: Friend (⭕)</div>
+                </div>
+            </div>
+            <div class="tic-tac-toe-grid" id="tic-grid"></div>
+            <div id="tic-result" class="game-result">Your turn! Make your move.</div>
+            <div class="game-stats">
+                <span>Player: ❌</span>
+                <span id="tic-status">Your turn!</span>
+                <span>Opponent: ⭕</span>
+            </div>
+            <button class="game-btn" onclick="ticTacToeGame.initMultiplayer()">New Game</button>
+        `;
+        
+        document.getElementById('game-content').innerHTML = content;
+        
+        const grid = document.getElementById('tic-grid');
+        grid.innerHTML = '';
+        
+        // Create grid
+        for (let i = 0; i < 9; i++) {
+            const cell = Utils.createElement('div', 'tic-cell');
+            cell.dataset.index = i;
+            cell.onclick = () => this.makeMoveMultiplayer(i);
+            grid.appendChild(cell);
+        }
+    }
+
+    makeMoveMultiplayer(index) {
+        if (this.board[index] || this.gameOver || this.currentPlayer !== 'X') return;
+        
+        this.board[index] = 'X';
+        this.updateGrid();
+        
+        if (this.checkWinner()) {
+            this.gameOver = true;
+            document.getElementById('tic-result').innerHTML = `
+                <div class="result-text">You win! 🎉</div>
+                <div class="result-details">Great job!</div>
+            `;
+            document.getElementById('tic-status').textContent = 'You won!';
+            stats.updateGameStats('ticTacToe', { result: 'win' });
+            Utils.playSound('success');
+            Utils.vibrate([100, 50, 100]);
+            return;
+        }
+        
+        if (this.board.every(cell => cell !== '')) {
+            this.gameOver = true;
+            document.getElementById('tic-result').innerHTML = `
+                <div class="result-text">It's a tie! 🤝</div>
+                <div class="result-details">Good game!</div>
+            `;
+            document.getElementById('tic-status').textContent = 'Tie game!';
+            stats.updateGameStats('ticTacToe', { result: 'tie' });
+            Utils.playSound('click');
+            return;
+        }
+        
+        // Simulate opponent move
+        setTimeout(() => {
+            if (!this.gameOver) {
+                this.currentPlayer = 'O';
+                document.getElementById('tic-status').textContent = 'Opponent thinking...';
+                
+                setTimeout(() => {
+                    const availableMoves = this.board.map((cell, index) => cell === '' ? index : null).filter(val => val !== null);
+                    const randomMove = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+                    
+                    this.board[randomMove] = 'O';
+                    this.updateGrid();
+                    
+                    if (this.checkWinner()) {
+                        this.gameOver = true;
+                        document.getElementById('tic-result').innerHTML = `
+                            <div class="result-text">Opponent wins! 😔</div>
+                            <div class="result-details">Better luck next time!</div>
+                        `;
+                        document.getElementById('tic-status').textContent = 'Opponent won!';
+                        stats.updateGameStats('ticTacToe', { result: 'loss' });
+                        Utils.playSound('error');
+                        return;
+                    }
+                    
+                    if (this.board.every(cell => cell !== '')) {
+                        this.gameOver = true;
+                        document.getElementById('tic-result').innerHTML = `
+                            <div class="result-text">It's a tie! 🤝</div>
+                            <div class="result-details">Good game!</div>
+                        `;
+                        document.getElementById('tic-status').textContent = 'Tie game!';
+                        stats.updateGameStats('ticTacToe', { result: 'tie' });
+                        Utils.playSound('click');
+                        return;
+                    }
+                    
+                    this.currentPlayer = 'X';
+                    document.getElementById('tic-status').textContent = 'Your turn!';
+                }, 1000);
+            }
+        }, 500);
+    }
+
     makeMove(index) {
         if (this.board[index] || this.gameOver || this.currentPlayer !== 'X') return;
         

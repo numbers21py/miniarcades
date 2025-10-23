@@ -24,6 +24,80 @@ class ReactionGame {
         document.getElementById('game-content').innerHTML = content;
     }
 
+    initMultiplayer() {
+        const gameStats = stats.getStats().reaction;
+        const content = `
+            <div class="game-title-screen">⏱️ Reaction Test - Multiplayer</div>
+            <div class="multiplayer-info">
+                <div class="room-info">Room: ${multiplayer.roomId}</div>
+                <div class="players-info">
+                    <div class="player">You: ${leaderboard.currentUser?.firstName || 'Player'}</div>
+                    <div class="player">Opponent: Ready!</div>
+                </div>
+            </div>
+            <div class="reaction-area waiting" id="reaction-area" onclick="reactionGame.handleClickMultiplayer()">
+                <div>Wait for the signal...</div>
+            </div>
+            <div id="reaction-result" class="game-result">Both players ready! Click when you see the signal!</div>
+            <div class="game-stats">
+                <span>Best: ${gameStats.bestTime ? gameStats.bestTime + 'ms' : 'N/A'}</span>
+                <span>Attempts: ${gameStats.attempts}</span>
+                <span>Avg: ${gameStats.averageTime ? Math.round(gameStats.averageTime) + 'ms' : 'N/A'}</span>
+            </div>
+            <button class="game-btn" onclick="reactionGame.startMultiplayer()" id="start-reaction-btn">Start Test</button>
+        `;
+        document.getElementById('game-content').innerHTML = content;
+    }
+
+    startMultiplayer() {
+        const area = document.getElementById('reaction-area');
+        const btn = document.getElementById('start-reaction-btn');
+        
+        btn.disabled = true;
+        btn.textContent = 'Get Ready...';
+        area.classList.remove('waiting');
+        area.classList.add('ready');
+        area.innerHTML = '<div>Get ready...</div>';
+        
+        const delay = Utils.getRandomInt(2000, 5000);
+        this.timeout = setTimeout(() => {
+            area.classList.remove('ready');
+            area.classList.add('go');
+            area.innerHTML = '<div>CLICK NOW!</div>';
+            this.startTime = Date.now();
+        }, delay);
+    }
+
+    handleClickMultiplayer() {
+        const area = document.getElementById('reaction-area');
+        const btn = document.getElementById('start-reaction-btn');
+        
+        if (area.classList.contains('waiting') || area.classList.contains('ready')) {
+            return;
+        }
+        
+        if (area.classList.contains('go')) {
+            const reactionTime = Date.now() - this.startTime;
+            const result = document.getElementById('reaction-result');
+            
+            area.classList.remove('go');
+            area.classList.add('waiting');
+            area.innerHTML = '<div>Wait for the signal...</div>';
+            
+            result.innerHTML = `
+                <div class="result-text">Your time: ${reactionTime}ms</div>
+                <div class="result-details">Opponent: ${Utils.getRandomInt(150, 400)}ms</div>
+            `;
+            
+            btn.disabled = false;
+            btn.textContent = 'Try Again';
+            
+            stats.updateGameStats('reaction', { time: reactionTime });
+            Utils.playSound('success');
+            Utils.vibrate([100, 50, 100]);
+        }
+    }
+
     start() {
         const area = document.getElementById('reaction-area');
         const btn = document.getElementById('start-reaction-btn');

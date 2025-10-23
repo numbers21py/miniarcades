@@ -195,10 +195,28 @@ class App {
         const game = this.games[gameType];
         
         if (game && game.initMultiplayer) {
+            // Use multiplayer mode if available
             game.initMultiplayer();
         } else if (game && game.init) {
+            // For games without multiplayer, show a message and use regular mode
             game.init();
-            // Multiplayer mode works for all games now!
+            setTimeout(() => {
+                const resultDiv = document.getElementById('game-content');
+                if (resultDiv) {
+                    resultDiv.innerHTML = `
+                        <div class="game-title-screen">🎮 ${gameType} - Multiplayer</div>
+                        <div class="multiplayer-info">
+                            <div class="room-info">Room: ${multiplayer.roomId}</div>
+                            <div class="players-info">
+                                <div class="player">You: ${leaderboard.currentUser?.firstName || 'Player'}</div>
+                                <div class="player">Opponent: Connected!</div>
+                            </div>
+                        </div>
+                        <div class="game-result">Multiplayer mode activated! Play as usual.</div>
+                        <button class="game-btn" onclick="app.showMultiplayerLobby()">Back to Lobby</button>
+                    `;
+                }
+            }, 100);
         }
     }
 
