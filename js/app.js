@@ -194,8 +194,14 @@ class App {
         this.showGameScreen();
         const game = this.games[gameType];
         
+        console.log('Starting multiplayer game:', gameType);
+        console.log('Game object:', game);
+        console.log('Has initMultiplayer:', game && game.initMultiplayer);
+        console.log('Multiplayer roomId:', multiplayer?.roomId);
+        
         if (game && game.initMultiplayer) {
             // Use multiplayer mode if available
+            console.log('Using initMultiplayer for', gameType);
             game.initMultiplayer();
         } else if (game && game.init) {
             // For games without multiplayer, show a message and use regular mode
@@ -206,9 +212,9 @@ class App {
                     resultDiv.innerHTML = `
                         <div class="game-title-screen">🎮 ${gameType} - Multiplayer</div>
                         <div class="multiplayer-info">
-                            <div class="room-info">Room: ${multiplayer.roomId}</div>
+                            <div class="room-info">Room: ${multiplayer?.roomId || 'Unknown'}</div>
                             <div class="players-info">
-                                <div class="player">You: ${leaderboard.currentUser?.firstName || 'Player'}</div>
+                                <div class="player">You: ${leaderboard?.currentUser?.firstName || 'Player'}</div>
                                 <div class="player">Opponent: Connected!</div>
                             </div>
                         </div>

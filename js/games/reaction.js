@@ -26,12 +26,13 @@ class ReactionGame {
 
     initMultiplayer() {
         const gameStats = stats.getStats().reaction;
+        const roomId = multiplayer?.roomId || 'Unknown';
         const content = `
             <div class="game-title-screen">⏱️ Reaction Test - Multiplayer</div>
             <div class="multiplayer-info">
-                <div class="room-info">Room: ${multiplayer.roomId}</div>
+                <div class="room-info">Room: ${roomId}</div>
                 <div class="players-info">
-                    <div class="player">You: ${leaderboard.currentUser?.firstName || 'Player'}</div>
+                    <div class="player">You: ${leaderboard?.currentUser?.firstName || 'Player'}</div>
                     <div class="player">Opponent: Ready!</div>
                 </div>
             </div>
