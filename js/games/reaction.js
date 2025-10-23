@@ -48,6 +48,22 @@ class ReactionGame {
             <button class="game-btn" onclick="reactionGame.startMultiplayer()" id="start-reaction-btn">Start Test</button>
         `;
         document.getElementById('game-content').innerHTML = content;
+        
+        // Simulate opponent joining after 2 seconds
+        setTimeout(() => {
+            const opponentElement = document.querySelector('.player:last-child');
+            if (opponentElement) {
+                opponentElement.textContent = 'Opponent: Connected! 🟢';
+                opponentElement.style.color = '#4CAF50';
+            }
+            
+            const resultDiv = document.getElementById('reaction-result');
+            if (resultDiv) {
+                resultDiv.innerHTML = `
+                    <div class="result-text">Opponent connected! Both players ready!</div>
+                `;
+            }
+        }, 2000);
     }
 
     startMultiplayer() {

@@ -50,6 +50,23 @@ class DiceGame {
             <button class="game-btn" onclick="diceGame.rollMultiplayer()" id="roll-btn">Roll Dice!</button>
         `;
         document.getElementById('game-content').innerHTML = content;
+        
+        // Simulate opponent joining after 2 seconds
+        setTimeout(() => {
+            const opponentElement = document.querySelector('.player:last-child');
+            if (opponentElement) {
+                opponentElement.textContent = 'Opponent: Connected! 🟢';
+                opponentElement.style.color = '#4CAF50';
+            }
+            
+            const resultDiv = document.getElementById('dice-result');
+            if (resultDiv) {
+                resultDiv.innerHTML = `
+                    <div class="result-text">Opponent connected! Ready to play!</div>
+                    <div class="result-details">Both players are ready</div>
+                `;
+            }
+        }, 2000);
     }
 
     rollMultiplayer() {

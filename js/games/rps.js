@@ -46,6 +46,22 @@ class RPSGame {
             </div>
         `;
         document.getElementById('game-content').innerHTML = content;
+        
+        // Simulate opponent joining after 2 seconds
+        setTimeout(() => {
+            const opponentElement = document.querySelector('.player:last-child');
+            if (opponentElement) {
+                opponentElement.textContent = 'Opponent: Connected! 🟢';
+                opponentElement.style.color = '#4CAF50';
+            }
+            
+            const resultDiv = document.getElementById('rps-result');
+            if (resultDiv) {
+                resultDiv.innerHTML = `
+                    <div class="result-text">Opponent connected! Choose your move!</div>
+                `;
+            }
+        }, 2000);
     }
 
     playMultiplayer(playerChoice) {

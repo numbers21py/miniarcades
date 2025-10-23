@@ -75,6 +75,22 @@ class TicTacToeGame {
             cell.onclick = () => this.makeMoveMultiplayer(i);
             grid.appendChild(cell);
         }
+        
+        // Simulate opponent joining after 2 seconds
+        setTimeout(() => {
+            const opponentElement = document.querySelector('.player:last-child');
+            if (opponentElement) {
+                opponentElement.textContent = 'Opponent: Connected! 🟢';
+                opponentElement.style.color = '#4CAF50';
+            }
+            
+            const resultDiv = document.getElementById('tic-result');
+            if (resultDiv) {
+                resultDiv.innerHTML = `
+                    <div class="result-text">Opponent connected! Your turn!</div>
+                `;
+            }
+        }, 2000);
     }
 
     makeMoveMultiplayer(index) {
