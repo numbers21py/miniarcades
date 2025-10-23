@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroArcade TMA - Full Edition</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/games.css">
+    <link rel="stylesheet" href="styles/themes.css">
+</head>
+<body>
+    <div id="app">
+            <!-- Navigation Bar -->
+            <nav class="nav-bar">
+                <button class="nav-btn" onclick="app.showSettings()">⚙️</button>
+                <button class="nav-btn" onclick="app.showLeaderboard()">🏆</button>
+                <div class="nav-title">🎮 MicroArcade</div>
+                <button class="nav-btn" onclick="app.showStats()">📊</button>
+                <button class="nav-btn" onclick="app.inviteFriends()">👥</button>
+            </nav>
+
+        <!-- Main Menu Screen -->
+        <div id="main-menu" class="screen active">
+            <div class="header">
+                <p>Quick games for instant fun!</p>
+            </div>
+            
+            <div class="stats-summary">
+                <div class="stat-item">
+                    <div class="stat-value" id="total-games">0</div>
+                    <div class="stat-label">Games Played</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="total-wins">0</div>
+                    <div class="stat-label">Wins</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="best-reaction">N/A</div>
+                    <div class="stat-label">Best Time</div>
+                </div>
+            </div>
+            
+            <div class="game-grid" id="game-grid"></div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <button class="back-btn" onclick="app.showMainMenu()">← Back</button>
+            <div id="game-content"></div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen">
+            <div id="result-content"></div>
+            <button class="btn" onclick="app.playAgain()">Play Again</button>
+            <button class="btn btn-secondary" onclick="app.showMainMenu()">Main Menu</button>
+        </div>
+
+        <!-- Settings Screen -->
+        <div id="settings-screen" class="screen">
+            <button class="back-btn" onclick="app.showMainMenu()">← Back</button>
+            <div class="settings-section">
+                <div class="settings-title">🎨 Appearance</div>
+                <div class="setting-item">
+                    <span>Sound Effects</span>
+                    <div class="toggle-switch" id="sound-toggle" onclick="settings.toggleSound()"></div>
+                </div>
+                <div class="setting-item">
+                    <span>Haptic Feedback</span>
+                    <div class="toggle-switch" id="haptic-toggle" onclick="settings.toggleHaptic()"></div>
+                </div>
+                <div class="setting-item">
+                    <span>Animations</span>
+                    <div class="toggle-switch active" id="animation-toggle" onclick="settings.toggleAnimations()"></div>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <div class="settings-title">📊 Statistics</div>
+                <div class="setting-item">
+                    <span>Reset All Stats</span>
+                    <button class="btn btn-danger" onclick="settings.resetStats()">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Screen -->
+        <div id="stats-screen" class="screen">
+            <button class="back-btn" onclick="app.showMainMenu()">← Back</button>
+            <div class="settings-section">
+                <div class="settings-title">📊 Game Statistics</div>
+                <div id="detailed-stats"></div>
+            </div>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div id="leaderboard-screen" class="screen">
+            <button class="back-btn" onclick="app.showMainMenu()">← Back</button>
+            <div id="leaderboard-content"></div>
+        </div>
+
+        <!-- Multiplayer Lobby Screen -->
+        <div id="multiplayer-lobby" class="screen">
+            <button class="back-btn" onclick="app.showMainMenu()">← Back</button>
+            <div id="multiplayer-content"></div>
+        </div>
+    </div>
+
+    <!-- Particle Effects -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/stats.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/multiplayer.js"></script>
+    <script src="js/games/dice.js"></script>
+    <script src="js/games/rps.js"></script>
+    <script src="js/games/reaction.js"></script>
+    <script src="js/games/memory.js"></script>
+    <script src="js/games/snake.js"></script>
+    <script src="js/games/tic-tac-toe.js"></script>
+    <script src="js/games/slots.js"></script>
+    <script src="js/games/color-match.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

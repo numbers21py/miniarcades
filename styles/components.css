@@ -1,0 +1,574 @@
+/* Component Styles */
+
+/* Game Grid */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.game-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.game-card:hover::before {
+    left: 100%;
+}
+
+.game-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.game-card:active {
+    transform: translateY(-4px) scale(0.98);
+}
+
+.game-icon {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    display: block;
+    animation: bounce 2s infinite;
+}
+
+.game-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.game-description {
+    opacity: 0.8;
+    font-size: 0.8rem;
+    line-height: 1.2;
+}
+
+.game-difficulty {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+}
+
+/* Game Title Screen */
+.game-title-screen {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: pulse 2s infinite;
+}
+
+/* Result Screen */
+.result-icon {
+    font-size: 6rem;
+    margin-bottom: 20px;
+    animation: bounce 1s ease-in-out;
+}
+
+.result-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.result-stats {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 20px 0;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    font-size: 1.2rem;
+}
+
+.stat-label {
+    opacity: 0.8;
+}
+
+.stat-value {
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.achievement {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin: 10px 0;
+    font-weight: bold;
+    animation: slideInUp 0.5s ease;
+}
+
+/* Settings Screen */
+.settings-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 15px 0;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 350px;
+}
+
+.settings-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #ffd700;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-switch.active {
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+}
+
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.toggle-switch.active::after {
+    transform: translateX(25px);
+}
+
+/* Leaderboard Styles */
+.leaderboard-container {
+    padding: 20px 0;
+}
+
+.leaderboard-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.leaderboard-header h2 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    color: #ffd700;
+}
+
+.leaderboard-subtitle {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.user-rank-card {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.user-rank-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-rank-position {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.user-rank-name {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.leaderboard-list {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    gap: 15px;
+}
+
+.leaderboard-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+.leaderboard-item.current-user {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 237, 78, 0.1) 100%);
+    border: 2px solid rgba(255, 215, 0, 0.5);
+}
+
+.leaderboard-rank {
+    font-size: 1.5rem;
+    font-weight: bold;
+    min-width: 50px;
+    text-align: center;
+}
+
+.leaderboard-info {
+    flex: 1;
+}
+
+.leaderboard-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.leaderboard-username {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.leaderboard-score {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.leaderboard-empty {
+    text-align: center;
+    padding: 40px 20px;
+    opacity: 0.7;
+}
+
+.leaderboard-empty p:first-child {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.leaderboard-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Multiplayer UI */
+.multiplayer-container {
+    padding: 20px 0;
+}
+
+.multiplayer-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.multiplayer-header h2 {
+    font-size: 2rem;
+    color: #ffd700;
+    margin-bottom: 5px;
+}
+
+.game-type-label {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.multiplayer-options {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.multiplayer-rooms {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.multiplayer-rooms h3 {
+    text-align: center;
+    color: #ffd700;
+    margin-bottom: 15px;
+}
+
+.room-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+}
+
+.room-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+.room-info {
+    flex: 1;
+}
+
+.room-host {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.room-time {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.game-btn-small {
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-btn-small:hover {
+    transform: scale(1.05);
+}
+
+.no-rooms {
+    text-align: center;
+    opacity: 0.7;
+    padding: 20px;
+}
+
+.waiting-room {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.waiting-room h2 {
+    color: #ffd700;
+    margin-bottom: 30px;
+}
+
+.room-id-display {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 30px 0;
+}
+
+.room-id-label {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+.room-id-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+    word-break: break-all;
+}
+
+.waiting-animation {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 40px 0;
+}
+
+.pulse-dot {
+    width: 15px;
+    height: 15px;
+    background: #ffd700;
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.pulse-dot:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.pulse-dot:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+}
+
+.game-card-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.game-card-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.game-card-btn.multiplayer-btn {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-color: #667eea;
+}
+
+.game-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .game-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .game-card {
+        padding: 12px;
+        min-height: 100px;
+    }
+    
+    .game-icon {
+        font-size: 2rem;
+        margin-bottom: 6px;
+    }
+    
+    .game-title {
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+    }
+    
+    .game-description {
+        font-size: 0.75rem;
+        line-height: 1.1;
+    }
+    
+    .game-difficulty {
+        top: 8px;
+        right: 8px;
+        padding: 1px 4px;
+        font-size: 0.6rem;
+    }
+    
+    .settings-section {
+        padding: 15px;
+        margin: 10px 0;
+    }
+    
+    .settings-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .setting-item {
+        margin: 10px 0;
+        padding: 8px 0;
+        font-size: 0.9rem;
+    }
+    
+    .toggle-switch {
+        width: 40px;
+        height: 20px;
+    }
+    
+    .toggle-switch::after {
+        width: 16px;
+        height: 16px;
+        top: 2px;
+        left: 2px;
+    }
+    
+    .toggle-switch.active::after {
+        transform: translateX(20px);
+    }
+}
