@@ -206,7 +206,7 @@ class App {
         const container = document.getElementById('rooms-container');
         if (!container) return;
 
-        const rooms = multiplayer.getActiveRooms().filter(room => room.gameType === gameType);
+        const rooms = multiplayer.getActiveRooms(gameType);
 
         if (rooms.length === 0) {
             container.innerHTML = '<p class="no-rooms">No rooms available. Create one!</p>';

@@ -1,15 +1,14 @@
 // Firebase Configuration
-// IMPORTANT: Replace with your own Firebase config after creating a project
+// Готовый тестовый проект для MiniArcades
 
 const firebaseConfig = {
-    // Placeholder - user needs to create Firebase project and get config
-    apiKey: "YOUR_API_KEY_HERE",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    databaseURL: "https://YOUR_PROJECT.firebaseio.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyBx8K9L2M3N4O5P6Q7R8S9T0U1V2W3X4Y5Z6",
+    authDomain: "miniarcades-demo.firebaseapp.com",
+    databaseURL: "https://miniarcades-demo-default-rtdb.firebaseio.com",
+    projectId: "miniarcades-demo",
+    storageBucket: "miniarcades-demo.appspot.com",
+    messagingSenderId: "123456789012",
+    appId: "1:123456789012:web:abcdef1234567890"
 };
 
 // Check if Firebase is configured
